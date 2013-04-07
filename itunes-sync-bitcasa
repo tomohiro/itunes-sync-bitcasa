@@ -22,7 +22,7 @@ set -e
         BITCASA_TARGET="/Volumes/Bitcasa Infinite Drive/Music/iTunes/iTunes Media/Music"
       }
 
-      [ -d "$ITUNES_SOURCE" -o -d "$BITCASA_TARGET" ]
+      [ -d "$ITUNES_SOURCE" -a -d "$BITCASA_TARGET" ]
     }
 
     sync_directory() {
