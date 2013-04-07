@@ -1,0 +1,59 @@
+#!/bin/sh
+
+set -e
+
+    sync() {
+      initialize
+
+      for artist_dir in "$ITUNES_SOURCE"/*; do
+        sync_directory "$artist_dir"
+        for album_dir in "$artist_dir"/*; do
+          sync_directory "$album_dir"
+        done
+      done
+    }
+
+    initialize() {
+      [ -z "$ITUNES_SOURCE" ] && {
+        ITUNES_SOURCE="~/Music/iTunes/iTunes Media/Music"
+      }
+
+      [ -z "$BITCASA_TARGET" ] && {
+        BITCASA_TARGET="/Volumes/Bitcasa Infinite Drive/Music/iTunes/iTunes Media/Music"
+      }
+    }
+
+    sync_directory() {
+      local source_dir="$1"
+      local target_dir=$(echo "$source_dir" | sed -e "s:$ITUNES_SOURCE:$BITCASA_TARGET:g")
+      [ -d "$target_dir" ] || {
+        copy_to_bitcasa "$source_dir" "$target_dir"
+      }
+    }
+
+    copy_to_bitcasa() {
+      local from=$1
+      local to=$2
+
+      while :
+      do
+        local outgoing_size=$(outgoing_size)
+        echo "Bitcasa Sync now, outgoing data size: $outgoing_size"
+        if [ $outgoing_size = '0' ]; then
+          echo "Sync is finished."
+          break
+        fi
+        sleep 60
+      done
+
+      echo "Sync command: cp -R $from $to"
+      cp -R "$from" "$to"
+    }
+
+    outgoing_size() {
+      local size=$(du -s ~/Library/Caches/com.bitcasa.Bitcasa/Data/bks/outgoing | cut -f1)
+      echo $size
+    }
+
+
+sync
