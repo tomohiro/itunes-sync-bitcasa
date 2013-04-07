@@ -21,6 +21,8 @@ set -e
       [ -z "$BITCASA_TARGET" ] && {
         BITCASA_TARGET="/Volumes/Bitcasa Infinite Drive/Music/iTunes/iTunes Media/Music"
       }
+
+      [ -d "$ITUNES_SOURCE" -o -d "$BITCASA_TARGET" ]
     }
 
     sync_directory() {
@@ -39,10 +41,10 @@ set -e
       do
         local outgoing_size=$(outgoing_size)
         echo "Bitcasa Sync now, outgoing data size: $outgoing_size"
-        if [ $outgoing_size = '0' ]; then
+        [ $outgoing_size = '0' ] && {
           echo "Sync is finished."
           break
-        fi
+        }
         sleep 60
       done
 
