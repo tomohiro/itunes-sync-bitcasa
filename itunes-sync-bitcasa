@@ -40,7 +40,7 @@ set -e
       while :
       do
         local outgoing_size=$(outgoing_size)
-        echo "Bitcasa Sync now, outgoing data size: $outgoing_size"
+        echo "Bitcasa sync now, outgoing data size: $outgoing_size"
         [ $outgoing_size = '0' ] && {
           echo "Sync is finished."
           break
