@@ -46,7 +46,7 @@ $ itunes-sync-bitcasa
 If you want change the source or destination paths, you can type following command.
 
 ```sh
-$ itunes-sync-bitcasa ITUNES_SOURCE="/Volumes/Share/Music" BITCASA_TARGET="/Volumes/Bitcasa Infinite Drive/MusicBackup/Music"
+$ ITUNES_SOURCE="~/Music" BITCASA_TARGET="/Volumes/Bitcasa Infinite Drive/MusicBackup/Music" itunes-sync-bitcasa
 ```
 
 After backup, you can execute rsync in safety like below.
