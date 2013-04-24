@@ -43,7 +43,7 @@ Source                           | Destination
 $ itunes-sync-bitcasa
 ```
 
-If you want change the source or destination paths, you can type following command.
+If you want change the source or destination paths, you can type the following command.
 
 ```sh
 $ ITUNES_SOURCE="~/Music" BITCASA_TARGET="/Volumes/Bitcasa Infinite Drive/MusicBackup/Music" itunes-sync-bitcasa
