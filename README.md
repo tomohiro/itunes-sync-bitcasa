@@ -20,7 +20,7 @@ Clone this repository your local machine.
 $ git clone git://github.com/Tomohiro/itunes-sync-bitcasa.git
 ```
 
-Copy the `itunes-sync-bitcasa` command to your ~/bin` directory like below.
+Copy the `itunes-sync-bitcasa` command to your `~/bin` directory like below.
 
 ```sh
 $ cd itunes-sync-bitcasa
